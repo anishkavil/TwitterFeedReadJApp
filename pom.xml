@@ -59,35 +59,32 @@
       
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.5.0</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>java</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <mainClass>twitterfeedapp.sentiments.StreamApp</mainClass>
-          <arguments>
-            <argument>#Turkey Coup</argument>
-          </arguments>
-          <!--  <systemProperties>
-            <systemProperty>
-              <key>myproperty</key>
-              <value>myvalue</value>
-            </systemProperty>
-          </systemProperties> -->
-        </configuration>
-      </plugin>
-    </plugins>
-  
-  </build>
+ <build>
+ 	<plugins>
+ 		<plugin>
+ 		      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+        <archive>
+          <manifest>
+            <mainClass>twitterfeedapp.sentiments.App</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+      <executions>
+        <execution>
+          <id>make-assembly</id>
+          <phase>package</phase>
+          <goals>
+            <goal>single</goal>
+          </goals>
+        </execution>
+      </executions>
+ 		</plugin>
+ 	</plugins>
+ </build>
   
 
 </project>
